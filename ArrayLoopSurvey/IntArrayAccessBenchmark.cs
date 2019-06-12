@@ -3,6 +3,7 @@ using System.Linq;
 
 namespace ArrayLoopSurvey
 {
+	[CsvMeasurementsExporter]
 	[CsvExporter]
 	[DisassemblyDiagnoser]
 	public class IntArrayAccessBenchmark
