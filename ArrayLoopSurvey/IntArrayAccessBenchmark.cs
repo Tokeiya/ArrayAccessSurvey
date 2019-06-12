@@ -4,19 +4,12 @@ using System.Runtime.CompilerServices;
 
 namespace ArrayLoopSurvey
 {
+	[ShortRunJob]
 	[CsvExporter]
-	[DisassemblyDiagnoser]
 	public class IntArrayAccessBenchmark
 	{
-		[Params(1_000, 1_000_000, 1_000_000_000)]
-		public int ArraySize;
-		private int[] _array;
+		private readonly int[] _array = Enumerable.Range(0, 1_000_000_000).ToArray();
 
-		[IterationSetup]
-		public void IterationSetup()
-		{
-			_array = Enumerable.Range(0, ArraySize).ToArray();
-		}
 
 		[Benchmark]
 		[MethodImpl(MethodImplOptions.NoInlining)]
@@ -40,18 +33,5 @@ namespace ArrayLoopSurvey
 			foreach (var i in array) accum += i;
 			return accum;
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
 	}
 }

@@ -5,18 +5,10 @@ using System.Runtime.CompilerServices;
 namespace ArrayLoopSurvey
 {
 	[CsvExporter]
-	[DisassemblyDiagnoser]
 	public class LongArrayAccessBenchmark
 	{
-		[Params(1_000, 1_000_000, 1_000_000_000)]
-		public int ArraySize;
-		private long[] _array;
+		private readonly long[] _array = Enumerable.Range(0, 1_000_000_000).Select(i => (long) i).ToArray();
 
-		[IterationSetup]
-		public void IterationSetup()
-		{
-			_array = Enumerable.Range(0, ArraySize).Select(i => (long) i).ToArray();
-		}
 
 		[Benchmark]
 		[MethodImpl(MethodImplOptions.NoInlining)]
