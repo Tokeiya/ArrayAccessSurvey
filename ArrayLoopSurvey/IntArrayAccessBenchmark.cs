@@ -4,6 +4,7 @@ using System.Linq;
 namespace ArrayLoopSurvey
 {
 	[CsvExporter]
+	[DisassemblyDiagnoser]
 	public class IntArrayAccessBenchmark
 	{
 		private readonly int[] _array = Enumerable.Range(0, 900_000_000).ToArray();

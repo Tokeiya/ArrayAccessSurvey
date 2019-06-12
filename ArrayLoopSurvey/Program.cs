@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.IO.Compression;
 using BenchmarkDotNet.Running;
 
 namespace ArrayLoopSurvey
@@ -7,14 +9,23 @@ namespace ArrayLoopSurvey
 	{
 		static void Main(string[] args)
 		{
-			var intB = new IntArrayAccessBenchmark();
-			Console.WriteLine($"for:{intB.IntSumFor()}");
-			Console.WriteLine($"foreach:{intB.IntSumFor()}");
-
-			Console.WriteLine("Press enter to continue.");
-			Console.ReadLine();
-
 			BenchmarkRunner.Run<IntArrayAccessBenchmark>();
+
+			var fileName = $"{DateTimeOffset.Now.Ticks}.zip";
+
+			ZipFile.CreateFromDirectory("./BenchmarkDotNet.Artifacts", fileName);
+
+			Console.WriteLine($"");
+			Console.WriteLine($"");
+
+
+			Console.ForegroundColor = ConsoleColor.White;
+
+			Console.WriteLine($"{Environment.CurrentDirectory}\\{fileName}を作成しました。\n" +
+			                  $"恐れ入りますが、このファイルを、https://github.com/Tokeiya/ArrayAccessSurvey/issues \n" +
+			                  $"まで投稿して下さい。\n" +
+			                  $"(NewIssueを作成して頂き、コメント欄に当該ファイルをドラッグ&ドロップして下さい。)");
 		}
 	}
 }
+
