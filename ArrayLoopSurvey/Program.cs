@@ -1,4 +1,5 @@
-﻿using BenchmarkDotNet.Running;
+﻿using System;
+using BenchmarkDotNet.Running;
 
 namespace ArrayLoopSurvey
 {
@@ -7,6 +8,10 @@ namespace ArrayLoopSurvey
 		static void Main(string[] args)
 		{
 			BenchmarkRunner.Run<IntArrayAccessBenchmark>();
+
+			Console.WriteLine("Press enter to continue.");
+			Console.ReadLine();
+
 			BenchmarkRunner.Run<LongArrayAccessBenchmark>();
 		}
 	}

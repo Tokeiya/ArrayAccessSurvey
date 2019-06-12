@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace ArrayLoopSurvey
 {
-	[DryCoreJob]
+	[CsvExporter]
 	[DisassemblyDiagnoser]
 	public class LongArrayAccessBenchmark
 	{
